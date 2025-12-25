@@ -1,0 +1,4 @@
+project_id = "qcghdzygdzeliqxdfcli"
+
+[functions.generate-sloka-audio]
+verify_jwt = false

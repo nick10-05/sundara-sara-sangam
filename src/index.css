@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+@layer base {
+  :root {
+    --background: 36 100% 97%;
+    --foreground: 0 50% 15%;
+
+    --card: 36 60% 95%;
+    --card-foreground: 0 50% 15%;
+
+    --popover: 36 100% 97%;
+    --popover-foreground: 0 50% 15%;
+
+    --primary: 18 100% 50%;
+    --primary-foreground: 36 100% 97%;
+
+    --secondary: 43 95% 57%;
+    --secondary-foreground: 0 50% 15%;
+
+    --muted: 36 30% 90%;
+    --muted-foreground: 0 20% 40%;
+
+    --accent: 0 100% 27%;
+    --accent-foreground: 36 100% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 40% 85%;
+    --input: 36 40% 85%;
+    --ring: 18 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 36 60% 95%;
+    --sidebar-foreground: 0 50% 15%;
+    --sidebar-primary: 18 100% 50%;
+    --sidebar-primary-foreground: 36 100% 97%;
+    --sidebar-accent: 43 95% 57%;
+    --sidebar-accent-foreground: 0 50% 15%;
+    --sidebar-border: 36 40% 85%;
+    --sidebar-ring: 18 100% 50%;
+
+    /* Custom spiritual theme colors */
+    --saffron: 18 100% 60%;
+    --saffron-dark: 18 100% 45%;
+    /* --saffron-dark-color removed (revert to original theme) */
+    --gold: 43 95% 57%;
+    --gold-light: 43 95% 75%;
+    --cream: 36 100% 97%;
+    --cream-dark: 36 60% 90%;
+    --maroon: 0 100% 27%;
+    --maroon-light: 0 70% 35%;
+
+    /* Gradients */
+    --gradient-sacred: linear-gradient(135deg, hsl(var(--saffron)) 0%, hsl(var(--gold)) 50%, hsl(var(--saffron-dark)) 100%);
+    --gradient-header: linear-gradient(135deg, rgb(255, 112, 51) 0%, rgb(250, 190, 41) 50%, rgb(230, 69, 0) 100%);
+    --gradient-gold: linear-gradient(180deg, hsl(var(--gold-light)) 0%, hsl(var(--gold)) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsla(0, 0%, 0%, 0.3) 0%, hsla(0, 0%, 0%, 0.7) 100%);
+
+    /* Shadows */
+    --shadow-sacred: 0 10px 40px -10px hsla(18, 100%, 50%, 0.4);
+    --shadow-gold: 0 4px 20px -4px hsla(43, 95%, 57%, 0.5);
+    --shadow-elevated: 0 20px 60px -15px hsla(0, 50%, 15%, 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0 20% 8%;
+    --foreground: 36 60% 90%;
+
+    --card: 0 20% 12%;
+    --card-foreground: 36 60% 90%;
+
+    --popover: 0 20% 12%;
+    --popover-foreground: 36 60% 90%;
+
+    --primary: 18 100% 55%;
+    --primary-foreground: 0 20% 8%;
+
+    --secondary: 43 80% 50%;
+    --secondary-foreground: 0 20% 8%;
+
+    --muted: 0 15% 20%;
+    --muted-foreground: 36 30% 70%;
+
+    --accent: 43 95% 57%;
+    --accent-foreground: 0 20% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 15% 20%;
+    --input: 0 15% 20%;
+    --ring: 18 100% 55%;
+
+    --sidebar-background: 0 20% 12%;
+    --sidebar-foreground: 36 60% 90%;
+    --sidebar-primary: 18 100% 55%;
+    --sidebar-primary-foreground: 0 20% 8%;
+    --sidebar-accent: 43 80% 50%;
+    --sidebar-accent-foreground: 0 20% 8%;
+    --sidebar-border: 0 15% 20%;
+    --sidebar-ring: 18 100% 55%;
+
+    /* Custom spiritual theme colors for dark mode */
+    --saffron: 18 100% 60%;
+    --saffron-dark: 18 100% 45%;
+    --gold: 43 80% 50%;
+    --gold-light: 43 80% 65%;
+    --cream: 36 30% 20%;
+    --cream-dark: 36 20% 15%;
+    --maroon: 0 70% 35%;
+    --maroon-light: 0 60% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Lora', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer components {
+  .text-gradient-sacred {
+    background: var(--gradient-sacred);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-sacred {
+    background: var(--gradient-sacred);
+  }
+
+  .bg-gradient-header {
+    background: var(--gradient-header);
+  }
+
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  /* (no additional saffron utilities) */
+
+  .shadow-sacred {
+    box-shadow: var(--shadow-sacred);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .mandala-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7b32b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .border-ornate {
+    border-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--saffron)), hsl(var(--gold))) 1;
+  }
+
+  /* Fixed background for sloka pages - desktop */
+  .sloka-background {
+    background-attachment: fixed;
+  }
+
+  /* Mobile: use scroll instead of fixed for better performance */
+  @media (max-width: 768px) {
+    .sloka-background {
+      background-attachment: scroll;
+    }
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 20px hsla(18, 100%, 50%, 0.4); }
+    to { box-shadow: 0 0 40px hsla(43, 95%, 57%, 0.6); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animation-delay-100 { animation-delay: 0.1s; }
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-300 { animation-delay: 0.3s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-500 { animation-delay: 0.5s; }
+}
