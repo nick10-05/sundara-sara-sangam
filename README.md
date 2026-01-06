@@ -64,6 +64,30 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_key
 
 The application works without Supabase configuration, but audio generation features will be disabled.
 
+### Text-to-Speech (TTS) fallback for Indian languages
+
+Browsers may not include Telugu, Tamil, Malayalam or Kannada voices. To ensure summaries can be spoken in those languages, the app implements a server-side TTS fallback. Configure the fallback by adding the following to your `.env`:
+
+```env
+# URL of your deployed TTS endpoint which accepts POST { text, language }
+VITE_TTS_API_URL=https://your-domain/functions/generate-sloka-audio
+```
+
+How it works:
+- The client attempts to use the browser's native `SpeechSynthesis` voice for the requested language.
+- If a matching native voice isn't available, the client sends `{ text, language }` to `VITE_TTS_API_URL` and plays the returned audio blob.
+
+Supabase Edge Function example:
+- The repository contains `supabase/functions/generate-sloka-audio/index.ts` which posts to ElevenLabs' multilingual model and returns an MP3 stream.
+- To deploy to Supabase Edge Functions, follow Supabase docs and set `ELEVENLABS_API_KEY` in the function's environment.
+
+Testing locally:
+1. Ensure `VITE_TTS_API_URL` points to a reachable endpoint (deployed function or local tunnel).
+2. Run the app (`npm run dev`) and open a Sloka detail page.
+3. Click the summary audio button — if native voice is missing, the app will call the configured endpoint and play generated audio.
+
+Security note: keep API keys (e.g., `ELEVENLABS_API_KEY`) server-side and never expose them to the browser.
+
 ## Available Scripts
 
 - `npm run dev` - Start development server
