@@ -31,22 +31,26 @@ This project is built with:
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd sundara-sara-sangam-main
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
 
 4. Open your browser and navigate to:
+
 ```
 http://localhost:8080
 ```
@@ -74,14 +78,17 @@ VITE_TTS_API_URL=https://your-domain/functions/generate-sloka-audio
 ```
 
 How it works:
+
 - The client attempts to use the browser's native `SpeechSynthesis` voice for the requested language.
 - If a matching native voice isn't available, the client sends `{ text, language }` to `VITE_TTS_API_URL` and plays the returned audio blob.
 
 Supabase Edge Function example:
+
 - The repository contains `supabase/functions/generate-sloka-audio/index.ts` which posts to ElevenLabs' multilingual model and returns an MP3 stream.
 - To deploy to Supabase Edge Functions, follow Supabase docs and set `ELEVENLABS_API_KEY` in the function's environment.
 
 Testing locally:
+
 1. Ensure `VITE_TTS_API_URL` points to a reachable endpoint (deployed function or local tunnel).
 2. Run the app (`npm run dev`) and open a Sloka detail page.
 3. Click the summary audio button — if native voice is missing, the app will call the configured endpoint and play generated audio.
@@ -114,4 +121,3 @@ This project is open source and available for educational and spiritual purposes
 ---
 
 जय श्री राम | जय बजरंग बली
-
